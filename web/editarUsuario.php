@@ -1,4 +1,12 @@
 <?php 
+    if ($response === false) {
+    // Manejar errores
+        $_SESSION['update_error'] = "Error al actualizar los datos.";
+        header("Location: administrarCuenta.php");
+    } else {
+        $_SESSION['update_success'] = true;
+        header("Location: administrarCuenta.php?success=true");
+    }
     // Obtener los datos enviados desde el formulario
     $user = $_POST["usuario"];
     $email = $_POST["nuevo_email"];
@@ -31,14 +39,7 @@
 
 
     // Manejar la respuesta
-    if ($response === false) {
-        // Manejar errores
-        $_SESSION['update_error'] = "Error al actualizar los datos.";
-        header("Location: administrarCuenta.php");
-    } else {
-        $_SESSION['update_success'] = true;
-        header("Location: administrarCuenta.php?success=true");
-    }
+
 
     // Cerrar la conexión cURL
     curl_close($ch);
