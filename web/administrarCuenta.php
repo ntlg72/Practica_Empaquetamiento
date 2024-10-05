@@ -1,3 +1,23 @@
+<?php
+    session_start();
+    $us = $_SESSION["usuario"];
+    if ($us == "") {
+        header("Location: index.html");
+    }
+
+    if (isset($_GET['success']) && $_GET['success'] === 'true') {
+        unset($_SESSION['update_success']);
+    } else if (isset($_SESSION['update_error'])) {
+        unset($_SESSION['update_error']);
+    }
+    
+?>
+<?php
+    // Mostrar mensaje de éxito si se ha establecido en la sesión
+    if (isset($_SESSION['update_success']) && $_SESSION['update_success']) {
+        unset($_SESSION['update_success']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,27 +31,6 @@
 </head>
 
 <body>
-    <?php
-    session_start();
-    $us = $_SESSION["usuario"];
-    if ($us == "") {
-        header("Location: index.html");
-    }
-
-    if (isset($_GET['success']) && $_GET['success'] === 'true') {
-        echo '<div class="alert alert-success" role="alert">
-                  Datos actualizados correctamente.
-              </div>';
-        unset($_SESSION['update_success']);
-    } else if (isset($_SESSION['update_error'])) {
-        echo '<div class="alert alert-danger" role="alert">
-                  ' . $_SESSION['update_error'] . '
-              </div>';
-        unset($_SESSION['update_error']);
-    }
-    
-    ?>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="usuario.php">Almacén ABC</a>
@@ -47,18 +46,6 @@
 
 
     <h2>Administrar cuenta</h2>
-
-    <?php
-    // Mostrar mensaje de éxito si se ha establecido en la sesión
-    if (isset($_SESSION['update_success']) && $_SESSION['update_success']) {
-        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                      <strong>¡Éxito!</strong> Tus datos se han actualizado correctamente.
-                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>   
-
-                  </div>';
-        unset($_SESSION['update_success']);
-    }
-    ?>
 
     <!-- Formulario para actualizar el email -->
     <form method="post" action="editarUsuario.php" class="mb-4">

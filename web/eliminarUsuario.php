@@ -3,7 +3,7 @@
     $user = $_POST["usuario"];
 
     // URL del microservicio para eliminar usuario
-    $url = "http://192.168.100.2:3001/usuarios/$user";
+    $url = "http://usuarios:3001/usuarios/$user";
 
     // Inicializar cURL
     $ch = curl_init($url);
