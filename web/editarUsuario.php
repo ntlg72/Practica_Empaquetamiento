@@ -13,7 +13,7 @@
     $pass = $_POST["nueva_password"];
 
     // URL del microservicio con el nombre del usuario como parámetro
-    $url = "http://192.168.100.2:3001/usuarios/$user";
+    $url = "http://usuarios:3001/usuarios/$user";
 
     // Datos que se enviarán en la solicitud PUT
     $data = array(
