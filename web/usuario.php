@@ -39,7 +39,7 @@
     </thead>
     <tbody>
     <?php
-        $servurl="http://localhost:3002/productos";
+        $servurl="http://productos:3002/productos";
         $curl=curl_init($servurl);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
