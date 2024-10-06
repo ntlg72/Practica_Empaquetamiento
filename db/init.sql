@@ -1,36 +1,32 @@
-CREATE DATABASE IF NOT EXISTS productosDB;
-CREATE DATABASE IF NOT EXISTS usuariosDB;
-CREATE DATABASE IF NOT EXISTS ordenesDB;
+CREATE DATABASE IF NOT EXISTS almacenDB;
 
-USE productosDB;
-CREATE TABLE productos (
-  id INT AUTO_INCREMENT,
-  nombre VARCHAR(20),
-  precio FLOAT,
-  inventario INT,
-  PRIMARY KEY (id)
-);
-
-USE usuariosDB;
+DROP TABLE IF EXISTS usuarios;
 CREATE TABLE usuarios (
-  id INT AUTO_INCREMENT,
-  nombre VARCHAR(20),
-  usuario VARCHAR(10),
-  password VARCHAR(20),
-  email VARCHAR(50),
-  PRIMARY KEY (id)
+    nombre varchar(50),
+    email varchar(50),
+    usuario varchar(50),
+    password varchar(50),
+    PRIMARY KEY(usuario)
 );
 
-USE ordenesDB;
+DROP TABLE IF EXISTS productos;
+CREATE TABLE productos (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    nombre varchar(50),
+    precio decimal(10,2),
+    inventario int(11),
+    PRIMARY KEY(id)
+);
+
+DROP TABLE IF EXISTS ordenes;
 CREATE TABLE ordenes (
-  idOrdenes INT AUTO_INCREMENT,
-  numeroCliente INT,
-  fecha DATETIME,
-  total FLOAT,
-  PRIMARY KEY (idOrdenes)
+    id int(11) NOT NULL AUTO_INCREMENT,
+    nombreCliente varchar(50),
+    emailCliente varchar(50),
+    totalCuenta decimal(10,2),
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(id)
 );
 
-USE usuariosDB;
-INSERT INTO usuarios (nombre, usuario, password, email) VALUES 
-('Administrador', 'admin', '1234', 'admin@example.com'), 
-('Usuario 1', 'u1', '1111', 'u1@example.com');
+INSERT INTO usuarios (nombre, email, usuario, password) VALUES ('Admin', 'admin@admin.com', 'admin', 'admin');
+INSERT INTO usuarios (nombre, email, usuario, password) VALUES ('Usuario 1', 'user1@user.com', 'user1', '1234');
