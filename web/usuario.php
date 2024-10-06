@@ -1,10 +1,3 @@
-<?php
-    session_start();
-    $us=$_SESSION["usuario"];
-    if ($us==""){
-        header("Location: index.html");
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,17 +9,21 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+        session_start();
+        $us=$_SESSION["usuario"];
+        if ($us==""){
+            header("Location: index.html");
+        }
+    ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Almacén ABC</a>
-            <div class="navbar-nav">
-                <a class="nav-link" href="usuario.php">Orden</a>
-                <a class="nav-link" href="administrarCuenta.php">Administrar cuenta</a>
-            </div>
-            <span class="navbar-text">
-                <?php echo "<a class='nav-link' href='logout.php'>Logout $us</a>"; ?>
-            </span>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="usuario.php">Almacen ABC</a>
+        <span class="navbar-text">
+            <?php echo "<a class='nav-link' href='logout.php'>Logout $us</a>" ;?>
+        </span>
         </div>
+    </div>
     </nav>
     <form method="post" action="procesar.php"> 
     <table class="table">
@@ -42,7 +39,7 @@
     </thead>
     <tbody>
     <?php
-        $servurl="http://productos:3002/productos";
+        $servurl="http://localhost:3002/productos";
         $curl=curl_init($servurl);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

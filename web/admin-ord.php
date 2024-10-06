@@ -1,10 +1,3 @@
-<?php
-    session_start();
-    $us=$_SESSION["usuario"];
-    if ($us==""){
-        header("Location: index.html");
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +9,13 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+        session_start();
+        $us=$_SESSION["usuario"];
+        if ($us==""){
+            header("Location: index.html");
+        }
+    ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="admin.php">Almacen ABC</a>
@@ -52,7 +52,7 @@
     </thead>
     <tbody>
     <?php
-        $servurl="http://ordenes:3003/ordenes";
+        $servurl="http://localhost:3003/ordenes";
         $curl=curl_init($servurl);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -71,8 +71,8 @@
             $id=$dec ->id;
             $nombreCliente=$dec->nombreCliente;
             $emailCliente=$dec->emailCliente;
-            $totalCuenta=$dec->totalcuenta;
-            $fecha=$dec->fechahora;
+            $totalCuenta=$dec->totalCuenta;
+            $fecha=$dec->fecha;
      ?>
     
         <tr>
