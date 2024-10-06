@@ -1,8 +1,8 @@
-FROM node
+FROM node:22.7.0
 
 EXPOSE 3003
 
-WORKDIR /usuarios
+WORKDIR /ordenes
 
 COPY src/controllers /ordenes/controllers
 
