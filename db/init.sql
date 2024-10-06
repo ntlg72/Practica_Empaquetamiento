@@ -28,5 +28,8 @@ CREATE TABLE ordenes (
     PRIMARY KEY(id)
 );
 
-INSERT INTO usuarios (nombre, email, usuario, password) VALUES ('Admin', 'admin@admin.com', 'admin', 'admin');
+INSERT INTO usuarios (nombre, email, usuario, password) VALUES ('Admin', 'admin@admin.com', 'admin', '1111');
 INSERT INTO usuarios (nombre, email, usuario, password) VALUES ('Usuario 1', 'user1@user.com', 'user1', '1234');
+
+INSERT INTO productos (nombre, precio, inventario) VALUES ('Producto1', '12.333', '25');
+INSERT INTO productos (nombre, precio, inventario) VALUES ('Producto2', '14.883', '70');
